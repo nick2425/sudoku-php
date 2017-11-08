@@ -1,5 +1,5 @@
 {
-  "name": "abcaeffchen/sudoku-php",
+  "name": "milon/sudoku-php",
   "description": "Generate random Sudokus of different size and difficulty and check the solution.",
   "license": "LGPL v3.0",
   "authors": [
