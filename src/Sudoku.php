@@ -146,9 +146,32 @@ class Sudoku
 
         // initialize random generator
         if($seed === null)
-            $seed = time();
+            $seed = random_int(0, 999999999);
 
-        mt_srand($seed + $difficulty * 17);
+        $difficultyNumber = 1;
+        
+        switch($difficulty)
+        {
+            case self::VERY_EASY:
+                $difficultyNumber = 1;
+                break;
+            case self::EASY:
+                $difficultyNumber = 2;
+                break;
+            case self::NORMAL:
+                $difficultyNumber = 3;
+                break;
+            case self::MEDIUM:
+                $difficultyNumber = 4;
+                break;
+            case self::HARD:
+                $difficultyNumber = 5;
+                break;
+            default:
+                $difficultyNumber = 1;
+        }
+        
+        mt_srand($seed + $difficultyNumber * 17);
 
         // select blocks to fill randomly
         $cols = range(0, self::$blockSizes[$size] - 1);
@@ -340,6 +363,7 @@ class Sudoku
      */
     public static function checkInput(array &$inputSudoku)
     {
+                
         $rowCount = count($inputSudoku);
         if(!in_array($rowCount,self::$dimensions,true))
         {
